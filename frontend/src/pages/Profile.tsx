@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
   Avatar,
-  Divider,
+  // Divider,
   Grid,
   Dialog,
   DialogTitle,
@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import {
   Edit as EditIcon,
-  Business as OrgIcon,
+  // Business as OrgIcon,
   Add as AddIcon,
 } from "@mui/icons-material";
 import { useAuthStore } from "../store/authStore";

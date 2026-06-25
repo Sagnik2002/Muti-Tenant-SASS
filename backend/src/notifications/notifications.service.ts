@@ -24,7 +24,7 @@ export class NotificationsService {
         timestamp: new Date().toISOString(),
       });
       this.logger.debug(`Queued notification: ${event} for org ${orgId}`);
-    } catch (err) {
+    } catch (_err) {
       // Redis unavailable — log and continue without queuing
       this.logger.warn(
         `Could not queue notification (Redis unavailable): ${event}`,

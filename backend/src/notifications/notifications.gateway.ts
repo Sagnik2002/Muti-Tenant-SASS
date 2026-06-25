@@ -52,7 +52,7 @@ export class NotificationsGateway
       this.logger.log(
         `Client connected: ${client.id} (user: ${payload.email})`,
       );
-    } catch (error) {
+    } catch (_error) {
       this.logger.warn(`Client ${client.id} rejected — invalid token`);
       client.disconnect();
     }

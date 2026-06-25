@@ -1,8 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from './entities/user.entity';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { User } from "./entities/user.entity";
+import { UpdateUserDto } from "./dto/update-user.dto";
 
 @Injectable()
 export class UsersService {
@@ -14,10 +14,10 @@ export class UsersService {
   async findById(id: string): Promise<User> {
     const user = await this.userRepo.findOne({
       where: { id },
-      relations: ['memberships', 'memberships.organization'],
+      relations: ["memberships", "memberships.organization"],
     });
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException("User not found");
     }
     return user;
   }
@@ -35,13 +35,13 @@ export class UsersService {
   async getProfile(userId: string) {
     const user = await this.userRepo.findOne({
       where: { id: userId },
-      relations: ['memberships', 'memberships.organization'],
+      relations: ["memberships", "memberships.organization"],
     });
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException("User not found");
     }
 
-    const { passwordHash, ...profile } = user;
+    const { passwordHash: _passwordHash, ..._result } = user;
     return {
       ...profile,
       organizations: user.memberships.map((m) => ({

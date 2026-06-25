@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface Notification {
   id: string;
@@ -18,7 +18,7 @@ interface NotificationState {
   clearAll: () => void;
 }
 
-export const useNotificationStore = create<NotificationState>((set, get) => ({
+export const useNotificationStore = create<NotificationState>((set, _get) => ({
   notifications: [],
   unreadCount: 0,
 

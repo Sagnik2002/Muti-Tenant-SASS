@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import {
   Box,
   List,
@@ -11,7 +11,7 @@ import {
   Divider,
   useTheme,
   alpha,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Dashboard as DashboardIcon,
   FolderOpen as ProjectsIcon,
@@ -19,18 +19,18 @@ import {
   Person as ProfileIcon,
   Payment as PaymentIcon,
   Groups as MembersIcon,
-} from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
+} from "@mui/icons-material";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const DRAWER_WIDTH = 260;
 
 const menuItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
-  { text: 'Projects', icon: <ProjectsIcon />, path: '/projects' },
-  { text: 'Tasks', icon: <TasksIcon />, path: '/tasks' },
-  { text: 'Members', icon: <MembersIcon />, path: '/members' },
-  { text: 'Payments', icon: <PaymentIcon />, path: '/payments' },
-  { text: 'Profile', icon: <ProfileIcon />, path: '/profile' },
+  { text: "Dashboard", icon: <DashboardIcon />, path: "/" },
+  { text: "Projects", icon: <ProjectsIcon />, path: "/projects" },
+  { text: "Tasks", icon: <TasksIcon />, path: "/tasks" },
+  { text: "Members", icon: <MembersIcon />, path: "/members" },
+  { text: "Payments", icon: <PaymentIcon />, path: "/payments" },
+  { text: "Profile", icon: <ProfileIcon />, path: "/profile" },
 ];
 
 interface SidebarProps {
@@ -46,21 +46,21 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
   const drawerContent = (
     <Box
       sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
         background:
-          theme.palette.mode === 'dark'
-            ? 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)'
-            : 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)',
+          theme.palette.mode === "dark"
+            ? "linear-gradient(180deg, #1e293b 0%, #0f172a 100%)"
+            : "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
       }}
     >
       {/* Logo */}
       <Box
         sx={{
           p: 3,
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
           gap: 1.5,
         }}
       >
@@ -69,14 +69,16 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
             width: 40,
             height: 40,
             borderRadius: 2.5,
-            background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)',
+            background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 4px 14px rgba(99, 102, 241, 0.4)",
           }}
         >
-          <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: '1.1rem' }}>
+          <Typography
+            sx={{ color: "#fff", fontWeight: 800, fontSize: "1.1rem" }}
+          >
             S
           </Typography>
         </Box>
@@ -85,15 +87,19 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
             variant="h6"
             sx={{
               fontWeight: 800,
-              fontSize: '1.1rem',
-              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              fontSize: "1.1rem",
+              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
             }}
           >
             SaaS Workspace
           </Typography>
-          <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem' }}>
+          <Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ fontSize: "0.7rem" }}
+          >
             Project Management
           </Typography>
         </Box>
@@ -116,17 +122,17 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
                   borderRadius: 2.5,
                   px: 2,
                   py: 1.2,
-                  transition: 'all 0.2s ease',
+                  transition: "all 0.2s ease",
                   ...(isActive && {
                     background: `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.15)} 0%, ${alpha(theme.palette.primary.main, 0.08)} 100%)`,
                     color: theme.palette.primary.main,
-                    '& .MuiListItemIcon-root': {
+                    "& .MuiListItemIcon-root": {
                       color: theme.palette.primary.main,
                     },
                   }),
-                  '&:hover': {
+                  "&:hover": {
                     background: alpha(theme.palette.primary.main, 0.08),
-                    transform: 'translateX(4px)',
+                    transform: "translateX(4px)",
                   },
                 }}
               >
@@ -143,7 +149,7 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
                 <ListItemText
                   primary={item.text}
                   primaryTypographyProps={{
-                    fontSize: '0.9rem',
+                    fontSize: "0.9rem",
                     fontWeight: isActive ? 600 : 500,
                   }}
                 />
@@ -153,7 +159,7 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
                       width: 4,
                       height: 20,
                       borderRadius: 2,
-                      background: 'linear-gradient(180deg, #6366f1, #8b5cf6)',
+                      background: "linear-gradient(180deg, #6366f1, #8b5cf6)",
                     }}
                   />
                 )}
@@ -166,7 +172,10 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
   );
 
   return (
-    <Box component="nav" sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}>
+    <Box
+      component="nav"
+      sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}
+    >
       {/* Mobile drawer */}
       <Drawer
         variant="temporary"
@@ -174,8 +183,8 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
         onClose={onClose}
         ModalProps={{ keepMounted: true }}
         sx={{
-          display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { width: DRAWER_WIDTH, border: 'none' },
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": { width: DRAWER_WIDTH, border: "none" },
         }}
       >
         {drawerContent}
@@ -185,11 +194,11 @@ export default function Sidebar({ mobileOpen, onClose }: SidebarProps) {
       <Drawer
         variant="permanent"
         sx={{
-          display: { xs: 'none', md: 'block' },
-          '& .MuiDrawer-paper': {
+          display: { xs: "none", md: "block" },
+          "& .MuiDrawer-paper": {
             width: DRAWER_WIDTH,
-            border: 'none',
-            boxShadow: '1px 0 10px rgba(0,0,0,0.05)',
+            border: "none",
+            boxShadow: "1px 0 10px rgba(0,0,0,0.05)",
           },
         }}
         open
