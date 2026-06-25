@@ -1,0 +1,66 @@
+# Default values for saas-workspace Helm chart
+
+replicaCount:
+  backend: 2
+  frontend: 2
+
+image:
+  backend:
+    repository: ghcr.io/OWNER/saas-workspace-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  frontend:
+    repository: ghcr.io/OWNER/saas-workspace-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+
+service:
+  backend:
+    type: ClusterIP
+    port: 3000
+  frontend:
+    type: ClusterIP
+    port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  host: saas-workspace.example.com
+  tls: true
+  certIssuer: letsencrypt-prod
+
+config:
+  nodeEnv: production
+  dbHost: postgres-service
+  dbPort: "5432"
+  dbName: saas_workspace
+  redisHost: redis-service
+  redisPort: "6379"
+
+# Secrets — override via --set or external secret manager in production
+secrets:
+  dbUsername: postgres
+  dbPassword: changeme
+  jwtSecret: changeme-jwt-secret
+
+resources:
+  backend:
+    requests:
+      memory: 256Mi
+      cpu: 100m
+    limits:
+      memory: 512Mi
+      cpu: "1"
+  frontend:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 128Mi
+      cpu: 200m
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70

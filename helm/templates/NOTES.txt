@@ -1,0 +1,17 @@
+SaaS Workspace has been deployed!
+
+Access your application:
+{{- if .Values.ingress.enabled }}
+  URL: {{ if .Values.ingress.tls }}https{{ else }}http{{ end }}://{{ .Values.ingress.host }}
+  API docs: {{ if .Values.ingress.tls }}https{{ else }}http{{ end }}://{{ .Values.ingress.host }}/api/docs
+{{- end }}
+
+Backend replicas: {{ .Values.replicaCount.backend }}
+Frontend replicas: {{ .Values.replicaCount.frontend }}
+
+To check deployment status:
+  kubectl get pods -n saas-workspace
+  kubectl logs -n saas-workspace deploy/saas-workspace-backend
+
+To upgrade:
+  helm upgrade saas-workspace ./helm -n saas-workspace
